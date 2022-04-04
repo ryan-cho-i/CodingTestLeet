@@ -22,4 +22,3 @@ class Solution:
             numbers.append(min(left_max[i], right_max[i])-height[i])
 
         return(sum(numbers))
-        
