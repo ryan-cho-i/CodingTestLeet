@@ -1,1 +1,1 @@
-[float('inf')]
+print('hello')
