@@ -1,0 +1,90 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "source": [
+    "black = [[0,0], [0,1], [1,0],[2,2],[3,1]]\n",
+    "rows = 4\n",
+    "cols = 4 "
+   ],
+   "outputs": [],
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "source": [
+    "res = [(rows-1) * (cols-1), 0, 0, 0, 0]\n",
+    "\n",
+    "seen = {}\n",
+    "for x, y in black :\n",
+    "    for dx, dy in [(-1,-1), (-1,0), (0,-1), (0,0)]:\n",
+    "        nx = x + dx\n",
+    "        ny = y + dy \n",
+    "        if 0<= nx and nx+1 < rows and 0<= ny and ny+1 < cols:\n",
+    "            if seen.get((nx,ny), 0):\n",
+    "                res[seen[nx,ny]] -= 1 \n",
+    "                seen[(nx,ny)] = seen[nx,ny]+1\n",
+    "                res[seen[nx,ny]] += 1\n",
+    "            else :\n",
+    "                seen[(nx,ny)] = 1\n",
+    "                res[0] -= 1 \n",
+    "                res[1] += 1"
+   ],
+   "outputs": [],
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "source": [
+    "res"
+   ],
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "[1, 2, 0, 1, 0]"
+      ]
+     },
+     "metadata": {},
+     "execution_count": 13
+    }
+   ],
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "source": [],
+   "outputs": [],
+   "metadata": {}
+  }
+ ],
+ "metadata": {
+  "orig_nbformat": 4,
+  "language_info": {
+   "name": "python",
+   "version": "3.10.6",
+   "mimetype": "text/x-python",
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "pygments_lexer": "ipython3",
+   "nbconvert_exporter": "python",
+   "file_extension": ".py"
+  },
+  "kernelspec": {
+   "name": "python3",
+   "display_name": "Python 3.10.6 64-bit"
+  },
+  "interpreter": {
+   "hash": "aee8b7b246df8f9039afb4144a1f6fd8d2ca17a180786b69acc140d282b71a49"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
